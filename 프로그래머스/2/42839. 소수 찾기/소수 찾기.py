@@ -2,32 +2,23 @@ from itertools import permutations
 
 def solution(numbers):
     answer = 0
-    num_list = list(numbers)
-    all_numbers = set()
+    lst = []
+    kk = len(numbers)
     
-    for i in range(1, len(num_list) + 1):
-        for perm in permutations(num_list, i):
-            num = int(''.join(perm))
-            all_numbers.add(num)
-    
-
-    for number in all_numbers:
-        if prime(number): 
-            answer += 1
+    for i in range(1, kk+1):
+        number_permutations = set(int("".join(p)) for p in permutations(numbers, i))
+        
+        for num in number_permutations:
+            if num not in lst and is_prime(num):
+                lst.append(num)
+                answer += 1
     
     return answer
 
-
-def prime(numbers1):
-    if numbers1 < 2:
-        return False 
-    
-    for i in range(2, int(numbers1**0.5) + 1):
-        if numbers1 % i == 0:
+def is_prime(number):
+    if number < 2:
+        return False
+    for i in range(2, int(number**0.5) + 1):
+        if number % i == 0:
             return False
-    
     return True
-
-            
-            
-            
