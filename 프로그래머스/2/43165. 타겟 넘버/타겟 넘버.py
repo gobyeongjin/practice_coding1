@@ -1,19 +1,13 @@
-# from itertools import product
-# def solution(numbers, target):
-
-#     a=[(-i,i) for i in numbers]
+def dfs(index, current_sum, numbers, target):
+    if index == len(numbers):
+        return 1 if current_sum == target else 0
     
-#     answer=list(map(sum,product(*a)))
-
-#     return answer.count(target)
+    count = 0
+    count += dfs(index + 1, current_sum + numbers[index], numbers, target)  
+    count += dfs(index + 1, current_sum - numbers[index], numbers, target)  
+    
+    return count
 
 def solution(numbers, target):
-    
-    results = [[]]
-    
-    for i in numbers:
-        results = [x + [y] for x in results for y in (-i, i)]
-    
-    answer = [x for x in results if sum(x) == target]
-    
-    return len(answer)
+    return dfs(0, 0, numbers, target)
+
