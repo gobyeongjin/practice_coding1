@@ -9,7 +9,7 @@ def solution(n, computers):
     answer = 0
     
     for i in range(n):
-        if not visited[i]: 
+        if not visited[i]:  
             dfs(computers, visited, i, n) 
             answer += 1  
     
