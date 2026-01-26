@@ -1,32 +1,30 @@
 def solution(sequence, k):
     
+    answer = []
+    
+    n = len(sequence)
+    
     st = 0
     end = 0
+    current_sum = sequence[0]
     
-    current_sum = 0
-    result = [] 
-    
-    len_sequence = len(sequence)
-    
-    while True:
-        if current_sum >= k :
-            if current_sum == k:
-                result.append((st,end-1))
-            
+    while st < n and end < n:
+        if current_sum == k:
+            answer.append([st,end])
             current_sum -= sequence[st]
             st += 1
-                
-
+        
+        elif current_sum < k:
+            end += 1
+            if end < n:
+                current_sum += sequence[end]
+            
         
         else:
-            if end == len_sequence:
-                break
+            current_sum -= sequence[st]
+            st+=1
             
-            current_sum += sequence[end]
-            end += 1
-            
-    answer = min(result, key=lambda x: (x[1] - x[0], x[0]))
-            
+    
+    answer = min(answer, key=lambda x: x[1]-x[0])
+    
     return answer
-        
-        
