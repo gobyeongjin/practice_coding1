@@ -1,12 +1,10 @@
 def solution(array, commands):
     answer = []
-    for i in commands:
-        st = i[0]
-        finish = i[1]
+    
+    for command in commands:
+        arr = array[command[0]-1 : command[1]]
+        arr = sorted(arr)
         
-        array1 = array[st-1:finish]
-        array1 = sorted(array1)
-        answer.append(array1[i[2]-1])
-
-            
+        answer.append(arr[command[2]-1])
+        
     return answer
