@@ -1,17 +1,23 @@
 def solution(answers):
-    answer = [0, 0, 0]
-    students = [
-        [1, 2, 3, 4, 5],
-        [2, 1, 2, 3, 2, 4, 2, 5],
-        [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]
+    
+    people = [
+        [1,2,3,4,5],
+        [2,1,2,3,2,4,2,5],
+        [3,3,1,1,2,2,4,4,5,5]
     ]
     
-    for i, student in enumerate(students):
-        for j in range(len(answers)):
-            if student[j % len(student)] == answers[j]:
-                answer[i] += 1
+    score = [0,0,0]
     
-    max_score = max(answer)
-    result = [i + 1 for i, score in enumerate(answer) if score == max_score]
+    for i in range(len(answers)):
+        for j in range(3):
+            if answers[i] == people[j][i % len(people[j])]:
+                score[j] += 1
     
-    return result
+    max_score = max(score)
+    
+    answer = []
+    for i in range(3):
+        if score[i] == max_score:
+            answer.append(i+1)
+            
+    return answer
