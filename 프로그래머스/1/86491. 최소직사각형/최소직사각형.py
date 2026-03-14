@@ -1,16 +1,9 @@
 def solution(sizes):
-    answer = 0
-    length = []
-    tall = []
-    
-    for size in sizes:
-        size.sort()
+    width = []
+    height = []
     
     for i in sizes:
-        length.append(i[0])
-        tall.append(i[1])
+        width.append(max(i))
+        height.append(min(i))
     
-        
-    
-    
-    return max(length) * max(tall)
+    return max(width) * max(height)
