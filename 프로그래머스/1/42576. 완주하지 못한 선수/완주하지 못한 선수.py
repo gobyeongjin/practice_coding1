@@ -2,11 +2,10 @@ from collections import Counter
 def solution(participant, completion):
     answer = ''
     
-    participant = Counter(participant)
-    completion = Counter(completion)
+    p = Counter(participant)
+    c = Counter(completion)
     
-    answer = participant - completion
+    answer = p-c
+    answer= list(set(answer))
     
-    name = list(answer.keys())[0]
-    
-    return name
+    return answer[0]
