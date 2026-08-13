@@ -1,10 +1,13 @@
 def solution(arr):
-    answer = []
-    lst_num = -1
     
-    for i in arr:
-        if i!= lst_num:
-            answer.append(i)
-            lst_num = i
+    last = arr[0]
+    answer = [arr[0]]
+    
+    for i in range(1,len(arr)):
+        if last == arr[i]:
+            continue
+        else:
+            last = arr[i]
+            answer.append(arr[i])
     
     return answer
