@@ -1,11 +1,14 @@
 def solution(numbers):
-    numbers = list(map(str, numbers))
+    answer = ''
+    numbers = list(map(str,numbers))
     
-    numbers.sort(key=lambda x: x*3, reverse=True)
-    
-    answer = ''.join(numbers)
-    
-    if answer[0] == '0':
+    if all(num =='0' for num in numbers):
         return '0'
     
-    return answer
+    else:
+        numbers = sorted(numbers, key=lambda x: x*3, reverse=True)
+    
+    numbers = "".join(numbers)
+
+    
+    return numbers
