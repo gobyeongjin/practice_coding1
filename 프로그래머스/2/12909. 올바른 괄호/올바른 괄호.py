@@ -1,22 +1,23 @@
+from collections import deque
 def solution(s):
+    answer = True
     
-    stack = []
+    ss = []
     
+    s = deque(s)
     for i in s:
-        if i == ('('):
-            stack.append('(')
-        
+        if len(ss) == 0:
+            ss.append(i)
+        elif ss[-1] == '(' and i == ')':
+            ss.pop()
+        elif ss[-1] == '(' :
+            ss.append(i)
         else:
-            if stack == []:
-                return False
-            
-            else:
-                stack.pop()
-        
+            break
     
-    if stack != [] :
+    if len(ss) != 0:
         return False
+    else:
+        return True
     
-    return True
-                
-                
+ 
